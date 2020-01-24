@@ -6,6 +6,7 @@ Written by Conor McErlean(mcerlean-c13@ulster.ac.uk) on 06/01/2020
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 public class Coursework {
 
@@ -261,24 +262,30 @@ public class Coursework {
 
     }// linear search
 
-    public static int meanEvenArray(int array[], int start, int end){
+    public static double meanEvenArray(int array[], int start, int end){
         /*
         Calculate the mean of the even numbers between start and end
 
 	    */
         int total = 0, count = 0;
 
-        for(int counter = 0; counter<array.length; counter++){
-            if (array[counter]%2 == 0){
-                count++;
-                total += array[counter];
-            }
+        for(int counter = 0; counter<array.length; counter++) {
+            // Keep values in range
+            if (array[counter] >= start && array[counter] <= end) {
+                if (array[counter] % 2 == 0) {
+                    count++;
+                    total += array[counter];
+                }
+            }// if
         }// for
-        int mean = total / count;
+        double mean = (double) total / count;
+
         return mean;
     }
 
     public static void main(String[] args) {
+        // Values to 3 Decimal places where relevant
+        DecimalFormat df = new DecimalFormat("0.000");
         // Read array from file and print
         int[] numbers = readArrayFromFile("test.txt");
 
@@ -311,13 +318,14 @@ public class Coursework {
                 maxArrayValue(numbers) );
 
         // Mean, median and mode values
-        System.out.println("Mean value in Array = " + meanArrayValue(numbers));
+        System.out.println("Mean value in Array = "
+                + df.format(meanArrayValue(numbers)));
         System.out.println("Median value in Array = " +
                 medianArrayValue(numbers));
         System.out.println("Mode value in Array = " + modeArrayValue(numbers));
 
         // Search for key = 3555318 using Binary search
-        int key = 0;
+        int key = 84726;
         System.out.print("Binary Search: ");
         int location = binarySearch(numbers,key);
         System.out.println("Location of key: " + location);
@@ -327,9 +335,11 @@ public class Coursework {
         location = linearSearch(numbers, key);
         System.out.println("Location of key: " + location);
 
-        // Mean of all even numbers
+        // Mean of all even numbers in range
+
+        int lowerRange = -20000, upperRange = 20000 ;
         System.out.println("Mean of even numbers: " +
-                meanEvenArray(numbers, -20000, 20000));
+               df.format(meanEvenArray(numbers, lowerRange, upperRange)) );
     }//main
 
 

@@ -8,50 +8,6 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Coursework {
-    public static void main(String[] args) {
-        // Read array from file and print
-        int[] numbers = readArrayFromFile("practice.txt");
-
-        // Task: Complete main method below
-        // Read array from supplied text file (practice.txt) using method provided
-
-        // Sort array using Bubble sort (code provided)
-        System.out.print("Bubble sort: ");
-        bubbleSort(numbers);
-
-        // Compute the following stats from array obtained from text file
-        // Total number of positive values
-        System.out.println("Total Positives in Array = " +
-                countPositiveValues(numbers));
-
-        // Total number of negative values
-        System.out.println("Total Negatives in Array = " +
-                countNegativeValues(numbers));
-
-        // Total number of zero values
-        System.out.println("Total Zeros in Array = " +
-                countZeroValues(numbers));
-
-        // Minimum value (Values are sorted so this is quick)
-        System.out.println("Minimum value in Array = "
-                + minArrayValue(numbers));
-
-        // Maximum value
-        System.out.println("Maximum value in Array = " +
-               maxArrayValue(numbers) );
-
-        // Mean, median and mode values
-        System.out.println("Mean value in Array = " + meanArrayValue(numbers));
-        System.out.println("Median value in Array = " +
-                medianArrayValue(numbers));
-        System.out.println("Mode value in Array = " + modeArrayValue(numbers));
-
-        // Search for key = 3555318 using Binary search
-        int key = 7833106;
-        System.out.print("Binary Search: ");
-        int location = binarySearch(numbers,key);
-        System.out.println("Location of key: " + location);
-    }//main
 
     public static int[] readArrayFromFile(String filename) {
         /*
@@ -280,6 +236,101 @@ public class Coursework {
 
     }// binarySearch
 
+    public static int linearSearch(int array[], int key){
+        /*
+        Description: Performs linear search on an array for a specified value
+        Parameters:  int array of values and int key which item to be searched
+        Returns: int indicating first location of item, or -1 in case not found
+        */
+        boolean found = false;
+        int numberOfComparisons = 0;
+        int index = 0;
+        // Loop which breaks if number found or all numbers checked
+        do{
+            // Check key against current array value
+            if (array[index] == key){
+                found = true;
+            }// if
+            index++;
+            numberOfComparisons++;
+        }while(!found && (index < array.length));
+        // Return statements
+        System.out.println("Number of comparisons: " + numberOfComparisons);
+        if (found) return numberOfComparisons-1;
+        else return -1;
+
+    }// linear search
+
+    public static int meanEvenArray(int array[], int start, int end){
+        /*
+        Calculate the mean of the even numbers between start and end
+
+	    */
+        int total = 0, count = 0;
+
+        for(int counter = 0; counter<array.length; counter++){
+            if (array[counter]%2 == 0){
+                count++;
+                total += array[counter];
+            }
+        }// for
+        int mean = total / count;
+        return mean;
+    }
+
+    public static void main(String[] args) {
+        // Read array from file and print
+        int[] numbers = readArrayFromFile("test.txt");
+
+        // Task: Complete main method below
+        // Read array from supplied text file (practice.txt) using method provided
+
+        // Sort array using Bubble sort (code provided)
+        System.out.print("Bubble sort: ");
+        bubbleSort(numbers);
+
+        // Compute the following stats from array obtained from text file
+        // Total number of positive values
+        System.out.println("Total Positives in Array = " +
+                countPositiveValues(numbers));
+
+        // Total number of negative values
+        System.out.println("Total Negatives in Array = " +
+                countNegativeValues(numbers));
+
+        // Total number of zero values
+        System.out.println("Total Zeros in Array = " +
+                countZeroValues(numbers));
+
+        // Minimum value (Values are sorted so this is quick)
+        System.out.println("Minimum value in Array = "
+                + minArrayValue(numbers));
+
+        // Maximum value
+        System.out.println("Maximum value in Array = " +
+                maxArrayValue(numbers) );
+
+        // Mean, median and mode values
+        System.out.println("Mean value in Array = " + meanArrayValue(numbers));
+        System.out.println("Median value in Array = " +
+                medianArrayValue(numbers));
+        System.out.println("Mode value in Array = " + modeArrayValue(numbers));
+
+        // Search for key = 3555318 using Binary search
+        int key = 0;
+        System.out.print("Binary Search: ");
+        int location = binarySearch(numbers,key);
+        System.out.println("Location of key: " + location);
+
+        // Search for key using linear search
+        System.out.println("Linear Search:");
+        location = linearSearch(numbers, key);
+        System.out.println("Location of key: " + location);
+
+        // Mean of all even numbers
+        System.out.println("Mean of even numbers: " +
+                meanEvenArray(numbers, -20000, 20000));
+    }//main
 
 
 }//class

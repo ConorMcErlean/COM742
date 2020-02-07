@@ -31,6 +31,6 @@ public class WriteTheNumbers {
         }
     }
     public static void main(String[] arg) {
-        writeNumbers("thirty.txt", 30);
+        writeNumbers("Set2.txt", 20);
     }// main
 }// class

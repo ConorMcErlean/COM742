@@ -163,7 +163,7 @@ public class Pratical {
         // Add value 20 to position 10
         listNum.add(10, 20);
         arrayNum[10]= 20;
-        
+
         for (int i = 0; i < arrayNum.length; i++){
             System.out.print(arrayNum[i] + ", ");
         }

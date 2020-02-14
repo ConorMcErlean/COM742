@@ -1,7 +1,6 @@
 package Week3;
 
 import java.io.*;
-import java.sql.SQLOutput;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -20,7 +19,7 @@ public class SetsAndFiles {
 
             //loop through each character
             for (int i = 0; i <howMany; i++){
-                int number = (int) (Math.random() * 100);
+                int number = (int) (Math.random() * 100) +1;
                 pw.println(number);
             }
             //Closing

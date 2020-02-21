@@ -11,7 +11,7 @@ for a(30)
 */
 public class RecursiveFormula {
 
-    private static int secondRecursiveFormula(int input){
+    public static int secondRecursiveFormula(int input){
         int number;
         if (input == 1) {
             System.out.print(5 + " ");
@@ -24,7 +24,7 @@ public class RecursiveFormula {
         return number;
     }
 
-    private static int recursiveFormula(int input){
+    public static int recursiveFormula(int input){
         int number;
         if (input == 1) {
             System.out.print(3 + " ");
